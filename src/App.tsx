@@ -1,8 +1,10 @@
+import WorkflowPage from '@/pages/workflow-page';
+
 function App() {
 
   return (
     <>
-      <div className={'text-amber-300 border-amber-50 '}>hihiuhi</div>
+      <WorkflowPage/>
     </>
   )
 }
