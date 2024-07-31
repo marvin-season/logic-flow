@@ -18,7 +18,7 @@ custom node.
 
 ### Custom
 
-### Concept in programming languages
+### In programming languages
 
 - Condition: if-else
 - Loop: for-while
