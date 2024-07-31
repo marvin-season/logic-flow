@@ -1,30 +1,24 @@
-# React + TypeScript + Vite
+# React + Ts + Tailwind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## what is this
 
-Currently, two official plugins are available:
+**A tool to handle your data using custom nodes created with react-workflow.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+There are some basic nodes like `condition`, `loop`, and so on, similar to functional programming languages.
 
-## Expanding the ESLint configuration
+Condition nodes are like if-else statements, and loop nodes are like for-while loops.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Finally, you can compose your nodes to create a custom func flow, these flow can be saved as a New Node, and you can use
+it in other flows.
 
-- Configure the top-level `parserOptions` property like this:
+In conclusion, it's a tool composed of many nodes, and each node is similar to a concept in programming languages or a
+custom node.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Node
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Custom
+
+### Concept in programming languages
+
+- Condition: if-else
+- Loop: for-while
