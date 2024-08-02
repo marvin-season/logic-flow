@@ -1,0 +1,144 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "variables": [],
+        "type": "start",
+        "title": "开始",
+        "desc": ""
+      },
+      "targetPosition": "left",
+      "width": 240,
+      "sourcePosition": "right",
+      "positionAbsolute": {
+        "x": 80,
+        "y": 282
+      },
+      "id": "1722392985266",
+      "position": {
+        "x": 80,
+        "y": 282
+      },
+      "type": "custom",
+      "height": 50
+    },
+    {
+      "data": {
+        "outputs": [],
+        "type": "end",
+        "title": "结束",
+        "desc": ""
+      },
+      "targetPosition": "left",
+      "width": 240,
+      "sourcePosition": "right",
+      "positionAbsolute": {
+        "x": 770,
+        "y": 228
+      },
+      "id": "1722591404701",
+      "position": {
+        "x": 770,
+        "y": 228
+      },
+      "type": "custom",
+      "selected": true,
+      "height": 62
+    },
+    {
+      "data": {
+        "logical_operator": "and",
+        "type": "if-else",
+        "title": "条件分支",
+        "conditions": [],
+        "desc": ""
+      },
+      "targetPosition": "left",
+      "width": 240,
+      "sourcePosition": "right",
+      "positionAbsolute": {
+        "x": 395,
+        "y": 264
+      },
+      "id": "1722591412550",
+      "position": {
+        "x": 395,
+        "y": 264
+      },
+      "type": "custom",
+      "selected": false,
+      "height": 98
+    },
+    {
+      "data": {
+        "outputs": [],
+        "type": "end",
+        "title": "结束 2",
+        "desc": ""
+      },
+      "targetPosition": "left",
+      "width": 240,
+      "sourcePosition": "right",
+      "positionAbsolute": {
+        "x": 770,
+        "y": 363
+      },
+      "id": "1722591418916",
+      "position": {
+        "x": 770,
+        "y": 363
+      },
+      "type": "custom",
+      "height": 62
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  },
+  "edges": [
+    {
+      "sourceHandle": "source",
+      "data": {
+        "sourceType": "start",
+        "isInIteration": false,
+        "targetType": "if-else"
+      },
+      "id": "1722392985266-source-1722591412550-target",
+      "source": "1722392985266",
+      "type": "custom",
+      "targetHandle": "target",
+      "target": "1722591412550",
+      "zIndex": 0
+    },
+    {
+      "sourceHandle": "true",
+      "data": {
+        "sourceType": "if-else",
+        "isInIteration": false,
+        "targetType": "end"
+      },
+      "id": "1722591412550-true-1722591404701-target",
+      "source": "1722591412550",
+      "type": "custom",
+      "targetHandle": "target",
+      "target": "1722591404701",
+      "zIndex": 0
+    },
+    {
+      "sourceHandle": "false",
+      "data": {
+        "sourceType": "if-else",
+        "isInIteration": false,
+        "targetType": "end"
+      },
+      "id": "1722591412550-false-1722591418916-target",
+      "source": "1722591412550",
+      "type": "custom",
+      "targetHandle": "target",
+      "target": "1722591418916",
+      "zIndex": 0
+    }
+  ]
+}
