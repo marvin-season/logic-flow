@@ -1,6 +1,6 @@
 import { FC, memo, ReactElement } from "react";
 import { NodeProps } from "reactflow";
-import { BaseSourceHandle } from "./base-handle";
+import { BaseSourceHandle, BaseTargetHandle } from "./base-handle";
 
 type BaseNodeProps = {
   children: ReactElement;
@@ -22,6 +22,8 @@ const BaseNode: FC<BaseNodeProps> = ({ id, data, children }) => {
           "p-6 group relative shadow-xs border border-transparent rounded-[15px] w-[240px] bg-[#fcfdff] border-solid"
         }
       >
+        <BaseTargetHandle />
+
         {children}
         <BaseSourceHandle />
       </div>

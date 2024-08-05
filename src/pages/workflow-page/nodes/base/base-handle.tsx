@@ -9,3 +9,12 @@ export const BaseSourceHandle = ({...props}) => {
     </>
   );
 };
+export const BaseTargetHandle = ({...props}) => {
+    console.log(props);
+    
+  return (
+    <>
+      <Handle type="target" position={Position.Left} id="left" />
+    </>
+  );
+};
