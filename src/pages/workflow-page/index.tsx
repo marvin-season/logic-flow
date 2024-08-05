@@ -5,7 +5,7 @@ export default function WorkflowPage() {
   return (
     <>
       <div
-        className={"h-screen border-2 border-b-amber-200 rounded bg-blue-50"}
+        className={"h-screen border-[20px] border-b-slate-50 rounded bg-blue-100 p-[20px]"}
       >
         <ReactFlowProvider>
           <Workflow />

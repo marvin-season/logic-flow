@@ -19,7 +19,7 @@ const Workflow = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState(graph.edges);
 
   return (
-    <div className="h-screen p-[20px]">
+    <div className="h-full">
       <ReactFlow
         nodeTypes={nodeTypes}
         nodes={nodes}
