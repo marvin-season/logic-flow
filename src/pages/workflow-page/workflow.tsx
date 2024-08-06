@@ -10,6 +10,7 @@ import {
 import "reactflow/dist/style.css";
 import { CustomNode } from "@/pages/workflow-page/nodes";
 import { CustomEdge } from "@/pages/workflow-page/edges";
+import { Operator } from "./operator";
 
 const nodeTypes = {
   custom: CustomNode,
@@ -25,6 +26,7 @@ const Workflow = () => {
 
   return (
     <div className="h-full">
+      <Operator />
       <ReactFlow
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
