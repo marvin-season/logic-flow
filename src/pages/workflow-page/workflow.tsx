@@ -22,6 +22,7 @@ const Workflow = () => {
     <div className="h-full">
       <ReactFlow
         nodeTypes={nodeTypes}
+        onNodeClick={console.log}
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
