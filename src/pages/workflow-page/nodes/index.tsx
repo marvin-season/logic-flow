@@ -1,6 +1,10 @@
-import {NodeProps} from 'reactflow';
+import { NodeProps } from 'reactflow';
 import BaseNode from '@/pages/workflow-page/nodes/base/node.tsx';
-import {NodeComponentMap} from '@/pages/workflow-page/constant.ts';
+import { NodeComponentMap } from '@/pages/workflow-page/nodes/constant';
+
+export { default as StartNode } from './start/node'
+export { default as EndNode } from './end/node'
+export { default as IfElseNode } from './if-else/node'
 
 
 export const CustomNode = (props: NodeProps) => {
@@ -9,7 +13,7 @@ export const CustomNode = (props: NodeProps) => {
   if (!NodeComponent) return null;
   return (
     <BaseNode {...props}>
-      <NodeComponent/>
+      <NodeComponent />
     </BaseNode>
   );
 };
