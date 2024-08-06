@@ -7,7 +7,7 @@ export default function ({ block }: { block: Block }) {
     <>
       <div>
         <ToolTip id="tooltip-block-item" render={() => block.description}>
-          <div>{block.title}</div>
+          <div className="!p-0 !px-3 !py-2.5 !w-[200px] !leading-[18px] !text-xs !text-gray-700 !border-[0.5px] !border-black/5 !rounded-xl !shadow-lg">{block.title}</div>
         </ToolTip>
       </div>
     </>
