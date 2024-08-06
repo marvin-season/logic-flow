@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+
 export default function ({
   id,
   children,
@@ -8,8 +9,9 @@ export default function ({
 }: {
   id: string;
   children: React.ReactNode;
-  render?: (props: any) => JSX.Element;
+  render?: (props: any) => JSX.Element | string | undefined;
   noArrow?: boolean;
+  place?: string;
 }) {
   return (
     <>
@@ -17,6 +19,7 @@ export default function ({
         "data-tooltip-id": id,
       })}
       <ReactTooltip
+        place="top"
         id={id}
         render={render}
         className="!z-[999] !bg-white !text-xs !font-normal !text-gray-700 !shadow-lg !opacity-100"

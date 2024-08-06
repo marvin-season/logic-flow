@@ -3,6 +3,22 @@ import { Node } from "reactflow";
 export enum BlockEnum {
   Start = "start",
   End = "end",
+  IfElse = "if-else",
+}
+
+export type Block = {
+  classification?: string
+  type: BlockEnum
+  title: string
+  description?: string
+}
+
+export enum BlockClassificationEnum {
+  Default = '-',
+  QuestionUnderstand = 'question-understand',
+  Logic = 'logic',
+  Transform = 'transform',
+  Utilities = 'utilities',
 }
 
 export type CommonNodeType<T = {}> = {
