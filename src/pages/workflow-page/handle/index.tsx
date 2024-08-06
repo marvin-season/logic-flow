@@ -9,17 +9,17 @@ type NodeHandleProps = {
 } & Pick<FlowNode, 'id' | 'data'>;
 
 
-export const BaseSourceHandle = memo<NodeHandleProps>(({ ...props }) => {
+export const BaseSourceHandle = memo<NodeHandleProps>(({ handleId, ...props }) => {
   return (
     <>
-      <Handle type="source" position={Position.Right} id="right" />
+      <Handle id={handleId} type="source" position={Position.Right} />
     </>
   );
 });
-export const BaseTargetHandle = memo<NodeHandleProps>(({ ...props }) => {
+export const BaseTargetHandle = memo<NodeHandleProps>(({ handleId, ...props }) => {
   return (
     <>
-      <Handle type="target" position={Position.Left} id="left" />
+      <Handle id={handleId} type="target" position={Position.Left} />
     </>
   );
 });

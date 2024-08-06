@@ -22,8 +22,14 @@ const BaseNode: FC<BaseNodeProps> = ({ id, data, children, selected }) => {
         }
       >
         {children}
-        <BaseTargetHandle />
-        <BaseSourceHandle />
+        <BaseTargetHandle
+          id={id} data={data}
+          handleClassName="!top-4 !-left-[9px] !translate-y-0"
+          handleId="target" />
+        <BaseSourceHandle id={id}
+          data={data}
+          handleClassName="!top-4 !-right-[9px] !translate-y-0"
+          handleId="source" />
       </div>
 
     </div>
