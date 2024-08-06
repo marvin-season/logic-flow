@@ -1,7 +1,7 @@
 import { FC, memo, ReactElement } from "react";
 import { NodeProps } from "reactflow";
 import cn from 'classnames';
-import { BaseSourceHandle, BaseTargetHandle } from "./base-handle";
+import { BaseSourceHandle, BaseTargetHandle } from "../../handle";
 
 type BaseNodeProps = {
   children: ReactElement;

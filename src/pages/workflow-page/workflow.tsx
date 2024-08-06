@@ -9,9 +9,14 @@ import {
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { CustomNode } from "@/pages/workflow-page/nodes";
+import { CustomEdge } from "@/pages/workflow-page/edges";
 
 const nodeTypes = {
   custom: CustomNode,
+};
+
+const edgeTypes = {
+  custom: CustomEdge,
 };
 
 const Workflow = () => {
@@ -22,6 +27,7 @@ const Workflow = () => {
     <div className="h-full">
       <ReactFlow
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         onNodeClick={console.log}
         nodes={nodes}
         edges={edges}
