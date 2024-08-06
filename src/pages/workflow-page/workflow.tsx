@@ -1,21 +1,40 @@
-import graph from './mock.json'
-import {Background, ReactFlow} from 'reactflow';
-import {CustomNode} from '@/pages/workflow-page/nodes';
-
-console.log("🚀  ", graph);
+import graph from "./mock.json";
+import {
+  Background,
+  Controls,
+  ReactFlow,
+  useEdgesState,
+  useNodesState,
+  useReactFlow,
+} from "reactflow";
+import "reactflow/dist/style.css";
+import { CustomNode } from "@/pages/workflow-page/nodes";
 
 const nodeTypes = {
   custom: CustomNode,
 };
 
 const Workflow = () => {
-  return <div style={{height: '600px'}}>
-    <ReactFlow nodeTypes={nodeTypes} nodes={graph.nodes as any} edges={graph.edges} fitView>
-      <Background/>
-    </ReactFlow>
-  </div>
-}
+  const [nodes, setNodes, onNodesChange] = useNodesState(graph.nodes as any);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(graph.edges);
 
-export default Workflow
+  return (
+    <div className="h-full">
+      <ReactFlow
+        nodeTypes={nodeTypes}
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        fitView
+      >
+        <Background />
+        <Controls />
+      </ReactFlow>
+    </div>
+  );
+};
 
-Workflow.displayName = 'Workflow'
+export default Workflow;
+
+Workflow.displayName = "Workflow";
