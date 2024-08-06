@@ -1,1 +1,1 @@
-export { default as BlockSelector } from './block-selector'
+export { default as BlockSelector } from './node-selector'
