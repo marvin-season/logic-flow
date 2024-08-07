@@ -9,7 +9,7 @@ import {
 export default function () {
   const [open, setOpen] = useState(false);
   return (
-    <PortalToFollowElem open={open}>
+    <PortalToFollowElem open={open} onOpenChange={setOpen}>
       <PortalToFollowElemTrigger>
         <div className="cursor-pointer" onClick={() => setOpen(!open)}>
           {"添加节点"}
