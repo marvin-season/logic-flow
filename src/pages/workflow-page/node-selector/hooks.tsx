@@ -1,3 +1,4 @@
+import { Block, FlowNode } from "../types";
 import { BLOCKS } from "./constant";
 
 export const useBlocks = () => {
@@ -6,5 +7,5 @@ export const useBlocks = () => {
       ...block,
       title: block.type,
     };
-  });
+  }) as Block[]
 };
