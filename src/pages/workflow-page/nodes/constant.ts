@@ -10,3 +10,5 @@ export const NodeComponentMap: Record<string, ComponentType<any>> = {
   end: EndNode,
   "if-else": IfElseNode,
 };
+
+export const CUSTOM_NODE = 'custom';

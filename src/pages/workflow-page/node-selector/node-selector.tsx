@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Blocks from "./blocks";
 import { Block } from "../types";
+import { generateNewNode } from "../utils";
+import { useWorkflowContext } from "../context";
 
 export default function () {
 
+  const { setCandicateNode } = useWorkflowContext()
+
   const handleOnSelect = (block: Block) => {
     console.log('block', block);
-
+    const newNode = generateNewNode({
+      data: {
+        title: '',
+        _isCandidate: true,
+      },
+      position: {
+        x: 0,
+        y: 0,
+      },
+    })
+    setCandicateNode(newNode);
   }
 
   return (

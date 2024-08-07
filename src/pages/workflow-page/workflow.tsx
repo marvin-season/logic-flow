@@ -11,6 +11,7 @@ import "reactflow/dist/style.css";
 import { CustomNode } from "@/pages/workflow-page/nodes";
 import { CustomEdge } from "@/pages/workflow-page/edges";
 import { Operator } from "./operator";
+import { CandicateNode } from "./candicate-node";
 
 const nodeTypes = {
   custom: CustomNode,
@@ -27,6 +28,7 @@ const Workflow = () => {
   return (
     <div className="h-full">
       <Operator />
+      <CandicateNode />
       <ReactFlow
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
