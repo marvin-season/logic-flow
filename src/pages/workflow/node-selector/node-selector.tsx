@@ -2,11 +2,11 @@ import React from "react";
 import Blocks from "./blocks";
 import {Block} from "../types";
 import {generateNewNode} from "../utils";
-import {useWorkflowContext} from "../context";
+import {useWorkflowStore} from '@/pages/workflow/context/store.ts';
 
 export default function () {
 
-  const workflowContext = useWorkflowContext();
+  const setCandidateNode = useWorkflowStore(s => s.setCandidateNode)
 
   const handleOnSelect = (block: Block) => {
     const newNode = generateNewNode({
@@ -19,9 +19,7 @@ export default function () {
         y: 0,
       },
     })
-    workflowContext.setState({candidateNode: newNode})
-    console.log('workflowContext', workflowContext.getState());
-
+    setCandidateNode(newNode)
   }
 
   return (

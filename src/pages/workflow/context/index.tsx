@@ -1,10 +1,10 @@
-import { createContext, useContext } from "react";
-import { createWorkflowStore } from "./store.ts";
+import {createContext} from "react";
+import {createWorkflowStore} from "./store.ts";
 
 type WorkflowStore = ReturnType<typeof createWorkflowStore>;
 export const WorkflowContext = createContext<WorkflowStore | null>(null);
 
-export function WorkflowProvider({ children }: {
+export function WorkflowProvider({children}: {
   children: React.ReactNode;
 }) {
   const store = createWorkflowStore();
@@ -16,8 +16,3 @@ export function WorkflowProvider({ children }: {
     </>
   );
 }
-
-export const useWorkflowContext = () => {
-  return useContext(WorkflowContext)!;
-};
-

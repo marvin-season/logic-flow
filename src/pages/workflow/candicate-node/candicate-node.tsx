@@ -1,21 +1,18 @@
 import {useEventListener} from "ahooks";
-import {useWorkflowContext} from "../context";
 import {CUSTOM_NODE} from "../nodes/constant";
-import {useStore} from '@/pages/workflow/context/store.ts';
+import {useWorkflowStore} from '@/pages/workflow/context/store.ts';
 
 export default function () {
-  console.log('hi');
 
-  const workflowContext = useWorkflowContext();
-  const candidateNode = useStore(s => s.candidateNode)
-  console.log(' workflowContext.getState().candidateNode', workflowContext.getState().candidateNode);
+  const setCandidateNode = useWorkflowStore(s => s.setCandidateNode);
+  const candidateNode = useWorkflowStore(s => s.candidateNode)
 
   useEventListener('click', (e) => {
     console.log('hi');
   });
 
   useEventListener('contextmenu', (e) => {
-    workflowContext.setState({candicateNode: undefined})
+    setCandidateNode(undefined)
   });
   return (
     <>
