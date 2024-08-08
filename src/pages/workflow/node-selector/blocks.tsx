@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
 import { useBlocks } from "./hooks";
-import { useWorkflowContext } from "../context";
 import { Block } from "../types";
 import ToolTip from "@/components/tooltip";
 
