@@ -1,4 +1,4 @@
-import Workflow from "@/pages/workflow-page/workflow.tsx";
+import Workflow from "@/pages/workflow/workflow";
 import { ReactFlowProvider } from "reactflow";
 import { WorkflowContext, WorkflowProvider } from "./context";
 import { useState } from "react";

@@ -7,8 +7,8 @@ import {
   useNodesState,
 } from "reactflow";
 import "reactflow/dist/style.css";
-import { CustomNode } from "@/pages/workflow-page/nodes";
-import { CustomEdge } from "@/pages/workflow-page/edges";
+import { CustomNode } from "@/pages/workflow/nodes";
+import { CustomEdge } from "@/pages/workflow/edges";
 import { Operator } from "./operator";
 import { CandicateNode } from "./candicate-node";
 

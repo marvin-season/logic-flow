@@ -1,4 +1,4 @@
-import WorkflowPage from '@/pages/workflow-page';
+import WorkflowPage from '@/pages/workflow';
 
 function App() {
 

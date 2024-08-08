@@ -1,6 +1,6 @@
 import { NodeProps } from 'reactflow';
-import BaseNode from '@/pages/workflow-page/nodes/base/node.tsx';
-import { NodeComponentMap } from '@/pages/workflow-page/nodes/constant';
+import BaseNode from '@/pages/workflow/nodes/base/node';
+import { NodeComponentMap } from '@/pages/workflow/nodes/constant';
 
 export { default as StartNode } from './start/node'
 export { default as EndNode } from './end/node'
