@@ -3,15 +3,17 @@ import Blocks from "./blocks";
 import {Block} from "../types";
 import {generateNewNode} from "../utils";
 import {useWorkflowStore} from '@/pages/workflow/context/store.ts';
+import { NODES_INITIAL_DATA } from "../nodes/constant";
 
 export default function () {
 
   const setCandidateNode = useWorkflowStore(s => s.setCandidateNode)
 
   const handleOnSelect = (block: Block) => {
+    
     const newNode = generateNewNode({
       data: {
-        title: '',
+        ...NODES_INITIAL_DATA[block.type],
         _isCandidate: true,
       },
       position: {
@@ -19,6 +21,9 @@ export default function () {
         y: 0,
       },
     })
+
+    console.log('newNode', newNode);
+
     setCandidateNode(newNode)
   }
 

@@ -11,7 +11,7 @@ export const generateNewNode = ({
   ...rest
 }: any) => {
   return {
-    id: `${Date.now()}`,
+    id: id || `${Date.now()}`,
     type: type || CUSTOM_NODE,
     data,
     position,
