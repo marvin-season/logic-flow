@@ -1,8 +1,6 @@
 import Workflow from "@/pages/workflow/workflow";
-import { ReactFlowProvider } from "reactflow";
-import { WorkflowContext, WorkflowProvider } from "./context";
-import { useState } from "react";
-import { FlowNode } from "./types";
+import {ReactFlowProvider} from "reactflow";
+import {WorkflowProvider} from "./context";
 
 export default function WorkflowPage() {
   return (
@@ -12,7 +10,7 @@ export default function WorkflowPage() {
       >
         <WorkflowProvider>
           <ReactFlowProvider>
-            <Workflow />
+            <Workflow/>
           </ReactFlowProvider>
         </WorkflowProvider>
 
