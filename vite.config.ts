@@ -7,7 +7,13 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 6173,
-    host: true
+    host: true,
+    proxy: {
+      "/api-ai": {
+        target: "http://127.0.0.1:11434/",
+        rewrite: (path) => path.replace(/^\/api-ai/, ""),
+      }
+    }
   },
 
   resolve: {
