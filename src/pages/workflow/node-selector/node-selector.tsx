@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Blocks from "./blocks";
-import { Block } from "../types";
-import { generateNewNode } from "../utils";
-import { useWorkflowContext } from "../context";
+import {Block} from "../types";
+import {generateNewNode} from "../utils";
+import {useWorkflowContext} from "../context";
 
 export default function () {
 
@@ -19,7 +19,7 @@ export default function () {
         y: 0,
       },
     })
-    workflowContext.setState({candicateNode: newNode})
+    workflowContext.setState({candidateNode: newNode})
     console.log('workflowContext', workflowContext.getState());
 
   }
@@ -27,7 +27,7 @@ export default function () {
   return (
     <>
       <div className="rounded-lg border-[0.5px] border-gray-200 bg-white shadow-lg w-[300px] h-[500px] !min-w-[256px]">
-        <Blocks onSelect={handleOnSelect} />
+        <Blocks onSelect={handleOnSelect}/>
       </div>
     </>
   );

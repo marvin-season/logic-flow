@@ -1,19 +1,29 @@
 import { createStore } from "zustand";
 import { FlowNode } from "../types";
+import { useContext } from "react";
+import { WorkflowContext } from ".";
+import { useStore as useZustandStore } from "zustand";
 type Shape = {
-  candicateNode?: FlowNode;
-  setCandicateNode: (candidateNode?: FlowNode) => void;
+  candidateNode?: FlowNode;
+  setCandidateNode: (candidateNode?: FlowNode) => void;
 };
 
 export const createWorkflowStore = () => {
   return createStore<Shape>((set) => {
     return {
-      candicateNode: undefined,
-      setCandicateNode: (candidateNode?: FlowNode) => {
+      candidateNode: undefined,
+      setCandidateNode: (candidateNode?: FlowNode) => {
         set({
-          candicateNode: candidateNode,
+          candidateNode: candidateNode,
         });
       },
     };
   });
 };
+
+export function useStore<T>(selector: (state: Shape) => T): T {
+  const store = useContext(WorkflowContext);
+  if (!store) throw new Error("Missing WorkflowContext.Provider in the tree");
+
+  return useZustandStore(store, selector);
+}
