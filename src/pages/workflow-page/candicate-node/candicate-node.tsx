@@ -2,9 +2,11 @@ import { useEventListener } from "ahooks";
 import { useWorkflowContext } from "../context";
 
 export default function () {
-    const { candicateNode } = useWorkflowContext();
+    console.log('hi');
+    
+    const { getState } = useWorkflowContext();
+    console.log(getState());
 
-    console.log('candicateNode', candicateNode);
 
     useEventListener('click', (e) => {
 
@@ -16,7 +18,6 @@ export default function () {
     return (
         <>
             {
-                candicateNode?.title
             }
         </>
     );

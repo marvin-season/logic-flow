@@ -6,10 +6,9 @@ import { useWorkflowContext } from "../context";
 
 export default function () {
 
-  const { setCandicateNode } = useWorkflowContext()
+  const workflowContext = useWorkflowContext();
 
   const handleOnSelect = (block: Block) => {
-    console.log('block', block);
     const newNode = generateNewNode({
       data: {
         title: '',
@@ -20,7 +19,9 @@ export default function () {
         y: 0,
       },
     })
-    setCandicateNode(newNode);
+    workflowContext.setState({candicateNode: newNode})
+    console.log('workflowContext', workflowContext.getState());
+
   }
 
   return (
