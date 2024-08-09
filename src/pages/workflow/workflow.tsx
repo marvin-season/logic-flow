@@ -47,11 +47,8 @@ const Workflow = () => {
       <ReactFlow
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
-        onNodeClick={console.log}
         nodes={nodes}
         edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
         fitView
       >
         <Background/>
