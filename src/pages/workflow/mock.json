@@ -1,6 +1,25 @@
 {
   "nodes": [
     {
+      "id": "1723163857406",
+      "type": "custom",
+      "data": {
+        "type": "if-else",
+        "title": "条件",
+        "desc": "条件节点",
+        "defaultValue": {
+          "v": []
+        },
+        "_isCandidate": false
+      },
+      "position": {
+        "x": 262.9684898929845,
+        "y": 145.84548156956004
+      },
+      "targetPosition": "left",
+      "sourcePosition": "right"
+    },
+    {
       "data": {
         "variables": [],
         "type": "start",

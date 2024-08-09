@@ -28,8 +28,6 @@ const Workflow = () => {
   useContextMenu(openContextMenu);
 
   useEventListener('mousemove', (e) => {
-    console.log('mousemove');
-    
     const containerClientRect = workflowContainerRef.current?.getBoundingClientRect()
 
     if (containerClientRect) {
