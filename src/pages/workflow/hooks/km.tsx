@@ -9,3 +9,9 @@ export const useContextMenu = (action: (e: MouseEvent) => void) => {
     action(e);
   });
 }
+
+export const useMousemove = (action: (e: MouseEvent) => void) => {
+  useEventListener('mousemove', (e) => {
+    action(e);
+  });
+}

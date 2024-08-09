@@ -5,8 +5,11 @@ import {CustomNode} from "@/pages/workflow/nodes";
 import {CustomEdge} from "@/pages/workflow/edges";
 import {Operator} from "./operator";
 import {CandicateNode} from "./candicate-node";
-import {useContextMenu} from '@/pages/workflow/hooks/km.tsx';
+import {useContextMenu, useMousemove} from '@/pages/workflow/hooks/km.tsx';
 import {openContextMenu} from '@/pages/workflow/handles/open-context-menu.tsx';
+import { useRef } from "react";
+import { useWorkflowStore } from "./context/store";
+import { useEventListener } from "ahooks";
 
 const nodeTypes = {
   custom: CustomNode,
@@ -19,10 +22,28 @@ const edgeTypes = {
 const Workflow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(graph.nodes as any);
   const [edges, setEdges, onEdgesChange] = useEdgesState(graph.edges);
+  const setMousePosition = useWorkflowStore(s => s.setMousePosition)
+
+  const workflowContainerRef = useRef<HTMLDivElement>(null);
   useContextMenu(openContextMenu);
 
+  useEventListener('mousemove', (e) => {
+    console.log('mousemove');
+    
+    const containerClientRect = workflowContainerRef.current?.getBoundingClientRect()
+
+    if (containerClientRect) {
+      setMousePosition({
+        pageX: e.clientX,
+        pageY: e.clientY,
+        elementX: e.clientX - containerClientRect.left,
+        elementY: e.clientY - containerClientRect.top,
+      })
+    }
+  });
+
   return (
-    <div className="h-full">
+    <div className="h-full" ref={workflowContainerRef}>
       <Operator/>
       <CandicateNode/>
       <ReactFlow
