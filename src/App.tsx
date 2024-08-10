@@ -5,6 +5,7 @@ function App() {
 
   return (
     <>
+      <div id="portal-action"></div>
       <WorkflowPage />
     </>
   )

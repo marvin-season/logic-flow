@@ -1,4 +1,3 @@
-import graph from "./mock.json";
 import {
   Background,
   Controls,
@@ -18,6 +17,8 @@ import { useWorkflowStore } from "./context/store";
 import { useEventListener } from "ahooks";
 import { useNodeInteraction } from "./hooks";
 import { FlowNode } from "./types";
+import { createPortal } from "react-dom";
+import flow from "@/api/flow";
 
 const nodeTypes = {
   custom: CustomNode,
@@ -27,9 +28,9 @@ const edgeTypes = {
   custom: CustomEdge,
 };
 
-const Workflow = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState<FlowNode>(graph.nodes as any);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(graph.edges);
+const Workflow = ({ initNodes, initEdges }: any) => {
+  const [nodes, setNodes, onNodesChange] = useNodesState<FlowNode>(initNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
   const setMousePosition = useWorkflowStore((s) => s.setMousePosition);
 
   const { handleNodeDragStart, handleNodeDrag, handleNodeDragStop } =
@@ -54,6 +55,17 @@ const Workflow = () => {
 
   return (
     <div className="h-full" ref={workflowContainerRef}>
+      {createPortal(
+        <div
+          onClick={() => {
+            flow.setNodesApi(nodes);
+          }}
+        >
+          保存
+        </div>,
+        document.body
+        // document.getElementById("portal-action") as HTMLElement
+      )}
       <Operator />
       <CandicateNode />
       <ReactFlow
