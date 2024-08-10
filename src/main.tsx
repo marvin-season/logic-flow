@@ -1,20 +1,52 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./main.css";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Outlet,
+  Route,
+  RouterProvider,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import ApplicationPage from "./pages/application/index.tsx";
 import WorkflowPage from "./pages/workflow/index.tsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <div></div>
+    Component: () => {
+      const navigate = useNavigate();
+
+      return (
         <div>
-          <Outlet />
+          <div>
+            <div
+              onClick={() => {
+                navigate("/flow");
+              }}
+            >
+              flow
+            </div>
+            <div
+              onClick={() => {
+                navigate("/app");
+              }}
+            >
+              app
+            </div>
+          </div>
+          <div>
+            <div>
+              <div id="portal-action"></div>
+            </div>
+            <div>
+              <Outlet />
+            </div>
+          </div>
         </div>
-      </div>
-    ),
+      );
+    },
     children: [
       {
         path: "flow",

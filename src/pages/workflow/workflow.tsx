@@ -63,8 +63,7 @@ const Workflow = ({ initNodes, initEdges }: any) => {
         >
           保存
         </div>,
-        document.body
-        // document.getElementById("portal-action") as HTMLElement
+        document.getElementById("portal-action") as HTMLElement
       )}
       <Operator />
       <CandicateNode />
