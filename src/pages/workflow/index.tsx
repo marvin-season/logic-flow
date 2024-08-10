@@ -3,10 +3,10 @@ import { ReactFlowProvider } from "reactflow";
 import { WorkflowProvider } from "./context";
 import flow from "@/api/flow";
 
-const initNodes = (await flow.getFlowApi()).nodes;
-const initEdges = (await flow.getFlowApi()).edges;
+
 
 export default function WorkflowPage() {
+  
   return (
     <>
       <div
@@ -17,7 +17,7 @@ export default function WorkflowPage() {
         
         <WorkflowProvider>
           <ReactFlowProvider>
-            <Workflow initNodes={initNodes} initEdges={initEdges} />
+            <Workflow />
           </ReactFlowProvider>
         </WorkflowProvider>
       </div>

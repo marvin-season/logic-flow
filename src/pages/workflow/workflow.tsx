@@ -17,7 +17,6 @@ import { useWorkflowStore } from "./context/store";
 import { useEventListener } from "ahooks";
 import { useNodeInteraction } from "./hooks";
 import { FlowNode } from "./types";
-import { createPortal } from "react-dom";
 import flow from "@/api/flow";
 
 const nodeTypes = {
@@ -28,7 +27,11 @@ const edgeTypes = {
   custom: CustomEdge,
 };
 
-const Workflow = ({ initNodes, initEdges }: any) => {
+const initNodes = (await flow.getFlowApi()).nodes;
+const initEdges = (await flow.getFlowApi()).edges;
+console.log({initNodes, initEdges});
+
+const Workflow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState<FlowNode>(initNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
   const setMousePosition = useWorkflowStore((s) => s.setMousePosition);
@@ -55,16 +58,6 @@ const Workflow = ({ initNodes, initEdges }: any) => {
 
   return (
     <div className="h-full" ref={workflowContainerRef}>
-      {createPortal(
-        <div
-          onClick={() => {
-            flow.setNodesApi(nodes);
-          }}
-        >
-          保存
-        </div>,
-        document.getElementById("portal-action") as HTMLElement
-      )}
       <Operator />
       <CandicateNode />
       <ReactFlow
