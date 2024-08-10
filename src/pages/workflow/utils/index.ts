@@ -21,3 +21,17 @@ export const generateNewNode = ({
     ...rest,
   } as FlowNode;
 };
+
+const specialKeysCodeMap: Record<string, string | undefined> = {
+  ctrl: 'meta',
+}
+export const isMac = () => {
+  return navigator.userAgent.toUpperCase().includes('MAC')
+}
+
+export const getKeyboardKeyCodeBySystem = (key: string) => {
+  if (isMac())
+    return specialKeysCodeMap[key] || key
+
+  return key
+}

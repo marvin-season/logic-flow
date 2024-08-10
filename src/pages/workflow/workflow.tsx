@@ -4,6 +4,7 @@ import {
   ReactFlow,
   useEdgesState,
   useNodesState,
+  useStoreApi,
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { CustomNode } from "@/pages/workflow/nodes";
@@ -14,10 +15,11 @@ import { useContextMenu, useMousemove } from "@/pages/workflow/hooks/km.tsx";
 import { openContextMenu } from "@/pages/workflow/handles/open-context-menu.tsx";
 import { useRef } from "react";
 import { useWorkflowStore } from "./context/store";
-import { useEventListener } from "ahooks";
+import { useEventListener, useKeyPress } from "ahooks";
 import { useNodeInteraction } from "./hooks";
 import { FlowNode } from "./types";
 import flow from "@/api/flow";
+import { getKeyboardKeyCodeBySystem } from "./utils";
 
 const nodeTypes = {
   custom: CustomNode,
@@ -29,11 +31,10 @@ const edgeTypes = {
 
 const initNodes = (await flow.getFlowApi()).nodes;
 const initEdges = (await flow.getFlowApi()).edges;
-console.log({initNodes, initEdges});
+console.log({ initNodes, initEdges });
 
 const Workflow = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState<FlowNode>(initNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
+  const { getState } = useStoreApi();
   const setMousePosition = useWorkflowStore((s) => s.setMousePosition);
 
   const { handleNodeDragStart, handleNodeDrag, handleNodeDragStop } =
@@ -41,7 +42,12 @@ const Workflow = () => {
 
   const workflowContainerRef = useRef<HTMLDivElement>(null);
   useContextMenu(openContextMenu);
-
+  useKeyPress(`${getKeyboardKeyCodeBySystem("ctrl")}.s`, (e) => {
+    const { getNodes, edges } = getState();
+    e.preventDefault();
+    flow.setNodesApi({ nodes: getNodes(), edges });
+  }),
+    { exactMatch: true, useCapture: true };
   useEventListener("mousemove", (e) => {
     const containerClientRect =
       workflowContainerRef.current?.getBoundingClientRect();
@@ -63,8 +69,8 @@ const Workflow = () => {
       <ReactFlow
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
-        nodes={nodes}
-        edges={edges}
+        nodes={initNodes}
+        edges={initEdges}
         onNodeDragStart={handleNodeDragStart}
         onNodeDrag={handleNodeDrag}
         onNodeDragStop={handleNodeDragStop}
