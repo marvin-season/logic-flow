@@ -24,11 +24,10 @@ CustomNode.displayName = 'CustomNode';
 
 export const JavaScriptNode = (props: NodeProps) => {
   const nodeData = props.data;
-  const NodeComponent = NodeComponentMap[nodeData.type];
-  if (!NodeComponent) return null;
+  debugger
   return (
     <BaseJavaScriptNode {...props}>
-      <NodeComponent/>
+      {nodeData.label}
     </BaseJavaScriptNode>
   )
 }

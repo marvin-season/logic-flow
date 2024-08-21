@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 import ApplicationPage from "./pages/application/index.tsx";
 import WorkflowPage from "./pages/workflow/index.tsx";
-
+import '@/utils/javascript-node.ts'
 const router = createBrowserRouter([
   {
     path: "/",
