@@ -1,3 +1,5 @@
+import {Edge, NodeProps} from 'reactflow';
+
 export const flattenPrototypeChain = (obj: any): any[] => {
   const prototypes = [];
   let current = obj;
@@ -7,32 +9,28 @@ export const flattenPrototypeChain = (obj: any): any[] => {
   }
   return prototypes;
 };
-export const getPrototypeDetails = (func: Function) => {
-  const prototype = func.prototype;
-  const properties = Object.getOwnPropertyNames(prototype);
 
-  const methods = properties.filter(prop => typeof prototype[prop] === 'function' && prop !== 'constructor');
-  const nonMethods = properties.filter(prop => typeof prototype[prop] !== 'function');
 
-  return {
-    methods,
-    properties: nonMethods,
-  };
-};
-
-// Example usage
-console.log(getPrototypeDetails(Array));
-// Output: { methods: [ 'concat', 'copyWithin', 'entries', ... ], properties: [ 'length' ] }
-
-export const convertToReactFlowNodes = (obj: any) => {
+export const convertToReactFlowGraph = (obj: any) => {
   const prototypes = flattenPrototypeChain(obj);
-  return prototypes.map((prototype, index) => {
+  const nodes = prototypes.map((prototype, index) => {
     const properties = Object.getOwnPropertyNames(prototype);
     return {
       id: `node-${index}`,
       type: "javascript",
       data: {label: `${prototype.name || prototype.constructor.name}`, properties,},
       position: {x: 100, y: index * 150},
-    }
+      targetPosition: "top",
+      sourcePosition: "bottom",
+    } satisfies NodeProps[]
   });
+
+  const edges: Edge[] = prototypes.slice(1).map((_, index) => ({
+    id: `edge-${index}`,
+    source: `node-${index}`,
+    target: `node-${index + 1}`,
+    type: 'smoothstep',
+  }));
+
+  return {nodes, edges};
 };

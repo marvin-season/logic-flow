@@ -12,13 +12,13 @@ import {useEventListener, useKeyPress} from "ahooks";
 import {useNodeInteraction} from "./hooks";
 import flow from "@/api/flow";
 import {getKeyboardKeyCodeBySystem} from "./utils";
-import {convertToReactFlowNodes} from '@/utils/javascript-node.ts';
+import {convertToReactFlowGraph} from '@/utils/javascript-node.ts';
 
 function Demo() {
 }
 
-let jsNodes = convertToReactFlowNodes(Demo);
-console.log(jsNodes);
+const {nodes, edges} = convertToReactFlowGraph(Demo);
+console.log({nodes, edges});
 const nodeTypes = {
   custom: CustomNode,
   javascript: JavaScriptNode
@@ -31,8 +31,8 @@ const edgeTypes = {
 // const initNodes = (await flow.getFlowApi()).nodes;
 // const initEdges = (await flow.getFlowApi()).edges;
 
-const initNodes = jsNodes
-const initEdges: any = []
+const initNodes = nodes
+const initEdges: any = edges
 console.log({initNodes, initEdges});
 
 const Workflow = () => {

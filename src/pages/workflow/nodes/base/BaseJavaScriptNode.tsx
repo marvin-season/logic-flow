@@ -1,7 +1,6 @@
 import {FC, memo, ReactElement} from 'react';
 import cn from 'classnames';
-import {BaseSourceHandle, BaseTargetHandle} from '@/pages/workflow/handle';
-import {NodeProps} from 'reactflow';
+import {Handle, NodeProps, Position} from 'reactflow';
 
 type BaseNodeProps = {
   children: ReactElement;
@@ -23,14 +22,10 @@ const BaseJavaScriptNode: FC<BaseNodeProps> = ({id, data, children, selected}) =
         }
       >
         {children}
-        <BaseTargetHandle
-          id={id} data={data}
-          handleClassName="!top-4 !-left-[9px] !translate-y-0"
-          handleId="target"/>
-        <BaseSourceHandle id={id}
-                          data={data}
-                          handleClassName="!top-4 !-right-[9px] !translate-y-0"
-                          handleId="source"/>
+        <Handle id={id} type="target" position={Position.Top}/>
+        {/*<Handle id={id} type="target" position={Position.Left}/>*/}
+        {/*<Handle id={id} type="target" position={Position.Right}/>*/}
+        <Handle id={id} type="source" position={Position.Bottom}/>
       </div>
 
     </div>
