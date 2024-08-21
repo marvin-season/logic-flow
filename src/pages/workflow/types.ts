@@ -46,3 +46,9 @@ export type CommonNodeType<T = {}> = {
 
 
 export type FlowNode<T = {}> = Node<CommonNodeType<T>>;
+
+
+export type JavaScriptNodeData = {
+  label: string,
+  properties: []
+}

@@ -2,6 +2,7 @@ import {NodeProps} from 'reactflow';
 import BaseNode from '@/pages/workflow/nodes/base/node';
 import {NodeComponentMap} from '@/pages/workflow/nodes/constant';
 import BaseJavaScriptNode from '@/pages/workflow/nodes/base/BaseJavaScriptNode.tsx';
+import {default as JavaScriptCommonNode} from '@/pages/workflow/nodes/javascript-node/node.tsx';
 
 export {default as StartNode} from './start/node'
 export {default as EndNode} from './end/node'
@@ -24,10 +25,9 @@ CustomNode.displayName = 'CustomNode';
 
 export const JavaScriptNode = (props: NodeProps) => {
   const nodeData = props.data;
-  debugger
   return (
     <BaseJavaScriptNode {...props}>
-      {nodeData.label}
+      <JavaScriptCommonNode data={nodeData}/>
     </BaseJavaScriptNode>
   )
 }
