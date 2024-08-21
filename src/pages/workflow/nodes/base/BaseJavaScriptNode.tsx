@@ -7,7 +7,13 @@ type BaseNodeProps = {
 } & NodeProps;
 
 
-const BaseJavaScriptNode: FC<BaseNodeProps> = ({id, data, children, selected}) => {
+const BaseJavaScriptNode: FC<BaseNodeProps> = ({
+                                                 id, data,
+                                                 children,
+                                                 selected,
+                                                 sourcePosition,
+                                                 targetPosition
+                                               }) => {
   return (
     <div
       className={cn("border-primary-600 border-solid flex border-[2px] rounded-2xl", selected && "border-blue-600")}
@@ -22,10 +28,10 @@ const BaseJavaScriptNode: FC<BaseNodeProps> = ({id, data, children, selected}) =
         }
       >
         {children}
-        <Handle id={id} type="target" position={Position.Top}/>
+        <Handle className={'!bg-blue-600 !w-2 !h-2'} id={id} type="target" position={targetPosition || Position.Top}/>
         {/*<Handle id={id} type="target" position={Position.Left}/>*/}
         {/*<Handle id={id} type="target" position={Position.Right}/>*/}
-        <Handle id={id} type="source" position={Position.Bottom}/>
+        <Handle className={'!bg-green-600 !w-2 !h-2'} id={id} type="source" position={sourcePosition || Position.Bottom}/>
       </div>
 
     </div>

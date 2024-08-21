@@ -29,7 +29,7 @@ export const convertToReactFlowGraph = (obj: any) => {
     id: `edge-${index}`,
     source: `node-${index}`,
     target: `node-${index + 1}`,
-    type: 'smoothstep',
+    type: 'custom-bezier',
   }));
 
   return {nodes, edges};

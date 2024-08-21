@@ -13,6 +13,7 @@ import {useNodeInteraction} from "./hooks";
 import flow from "@/api/flow";
 import {getKeyboardKeyCodeBySystem} from "./utils";
 import {convertToReactFlowGraph} from '@/utils/javascript-node.ts';
+import {BezierEdge} from '@/pages/workflow/edges/bezier-edge.tsx';
 
 function Demo() {
 }
@@ -26,6 +27,7 @@ const nodeTypes = {
 
 const edgeTypes = {
   custom: CustomEdge,
+  'custom-bezier': BezierEdge
 };
 
 // const initNodes = (await flow.getFlowApi()).nodes;
